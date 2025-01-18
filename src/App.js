@@ -1,4 +1,3 @@
-// Frontend (ReactJS)
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css"; // Import a CSS file for styling
@@ -10,7 +9,7 @@ const App = () => {
   const [submissions, setSubmissions] = useState([]);
 
   const fetchSubmissions = async () => {
-    const response = await axios.get("http://localhost:5000/submissions");
+    const response = await axios.get("https://social-media-task-s5ay.vercel.app/submissions");
     setSubmissions(response.data);
   };
 
@@ -27,7 +26,7 @@ const App = () => {
       formData.append("images", image);
     });
 
-    await axios.post("http://localhost:5000/submit", formData, {
+    await axios.post("https://social-media-task-s5ay.vercel.app/submit", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
@@ -82,7 +81,7 @@ const App = () => {
                   {user.images.map((image, idx) => (
                     <img
                       key={idx}
-                      src={`http://localhost:5000${image}`}
+                      src={`https://social-media-task-s5ay.vercel.app${image}`}
                       alt={`User upload ${idx}`}
                       className="user-image"
                     />
@@ -93,11 +92,8 @@ const App = () => {
           </div>
         </section>
       </main>
-
-      
     </div>
   );
 };
 
 export default App;
-
